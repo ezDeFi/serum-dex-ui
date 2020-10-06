@@ -3,9 +3,11 @@ import Wallet from '@project-serum/sol-wallet-adapter';
 import { notify } from './notifications';
 import { useConnectionConfig } from './connection';
 import { useLocalStorageState } from './utils';
+import EZWallet from './ezWallet';
 
 export const WALLET_PROVIDERS = [
   { name: 'sollet.io', url: 'https://www.sollet.io' },
+  { name: 'ezDefi', url: 'https://ezdefi.com' },
 ];
 
 const WalletContext = React.createContext(null);
@@ -18,10 +20,14 @@ export function WalletProvider({ children }) {
     'https://www.sollet.io',
   );
 
-  const wallet = useMemo(() => new Wallet(providerUrl, endpoint), [
+  let wallet = useMemo(() => new Wallet(providerUrl, endpoint), [
     providerUrl,
     endpoint,
   ]);
+  const [ezWallet] = useState(new EZWallet());
+  if (providerUrl !== 'https://www.sollet.io') {
+    wallet = ezWallet;
+  }
 
   const [connected, setConnected] = useState(false);
 
