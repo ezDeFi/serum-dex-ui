@@ -50,18 +50,18 @@ export function useAllMarkets(customMarkets) {
             programId: marketInfo.programId,
           });
         } catch (e) {
-          notify({
-            message: 'Error loading all market',
-            description: e.message,
-            type: 'error',
-          });
+          // notify({
+          //   message: 'Error loading all market',
+          //   description: e.message,
+          //   type: 'error',
+          // });
         }
       }
       setMarkets(markets);
     };
 
     getAllMarkets();
-  }, [connection]);
+  }, [connection, customMarkets]);
 
   return markets;
 }
