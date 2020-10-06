@@ -34,10 +34,17 @@ const LogoWrapper = styled.div`
 `;
 
 export default function TopBar() {
-  const { connected, wallet, providerUrl, setProvider } = useWallet();
+  const { connected, wallet, providerUrl, setProvider, cluster } = useWallet();
   const { endpoint, setEndpoint } = useConnectionConfig();
   const location = useLocation();
   const history = useHistory();
+
+  // Auto set endpoint when connected to ezDefi extension, available when testnet market is enabled
+  // ENDPOINTS.forEach((endpoint => {
+  //   if (endpoint.name === cluster) {
+  //     setEndpoint(endpoint.endpoint)
+  //   }
+  // }))
 
   const publicKey = wallet?.publicKey?.toBase58();
 
@@ -117,7 +124,12 @@ export default function TopBar() {
         </Button>
         {connected && (
           <Popover
-            content={<LinkAddress address={publicKey} />}
+            content={
+              <LinkAddress
+                address={publicKey}
+                cluster={cluster !== 'mainnet-beta' ? cluster : null}
+              />
+            }
             placement="bottomRight"
             title="Wallet public key"
             trigger="click"

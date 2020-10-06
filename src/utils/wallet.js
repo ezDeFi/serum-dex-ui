@@ -30,6 +30,7 @@ export function WalletProvider({ children }) {
   }
 
   const [connected, setConnected] = useState(false);
+  const [cluster, setCluster] = useState(false);
 
   useEffect(() => {
     console.log('trying to connect');
@@ -48,6 +49,9 @@ export function WalletProvider({ children }) {
         message: 'Wallet update',
         description: 'Connected to wallet ' + keyToDisplay,
       });
+      wallet
+        ._sendRequest('wallet_getCluster')
+        .then((cluster) => setCluster(cluster));
     });
     wallet.on('disconnect', () => {
       setConnected(false);
@@ -69,6 +73,7 @@ export function WalletProvider({ children }) {
         connected,
         providerUrl,
         setProviderUrl,
+        cluster,
         providerName:
           WALLET_PROVIDERS.find(({ url }) => url === providerUrl)?.name ??
           providerUrl,
@@ -86,6 +91,7 @@ export function useWallet() {
     wallet: context.wallet,
     providerUrl: context.providerUrl,
     setProvider: context.setProviderUrl,
+    cluster: context.cluster,
     providerName: context.providerName,
   };
 }
