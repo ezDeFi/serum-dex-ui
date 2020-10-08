@@ -34,6 +34,15 @@ export function WalletProvider({ children }) {
 
   useEffect(() => {
     console.log('trying to connect');
+    if (wallet === ezWallet && !window.ethereum) {
+      notify({
+        message: 'Error',
+        description:
+          'EzDefi not initialized. Please install EzDefi Extension and reload the page.',
+      });
+      setProviderUrl('https://www.sollet.io');
+      return;
+    }
     wallet.on('connect', () => {
       console.log('connected');
       setConnected(true);
@@ -64,7 +73,7 @@ export function WalletProvider({ children }) {
       wallet.disconnect();
       setConnected(false);
     };
-  }, [wallet]);
+  }, [wallet, ezWallet, setProviderUrl]);
 
   return (
     <WalletContext.Provider
