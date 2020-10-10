@@ -8,6 +8,7 @@ export function notify({
   txid,
   type = 'info',
   placement = 'bottomLeft',
+  needInstall,
 }) {
   if (txid) {
     description = (
@@ -18,6 +19,26 @@ export function notify({
       >
         View transaction {txid.slice(0, 8)}...{txid.slice(txid.length - 8)}
       </Link>
+    );
+  }
+  if (needInstall) {
+    description = (
+      <div>
+        <div>EzDefi not initialized.</div>
+        <span>Install </span>
+        <span>
+          <Link
+            external
+            to={
+              'https://chrome.google.com/webstore/detail/ezdefi/bangadcapihadohjgdihpcpmjlepokld'
+            }
+            style={{ color: '#FF0000', fontWeight: 'bold' }}
+          >
+            EzDefi Extension
+          </Link>
+        </span>
+        <span> and reload page.</span>
+      </div>
     );
   }
   notification[type]({

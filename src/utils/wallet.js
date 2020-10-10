@@ -37,8 +37,7 @@ export function WalletProvider({ children }) {
     if (wallet === ezWallet && !window.solana) {
       notify({
         message: 'Error',
-        description:
-          'EzDefi not initialized. Please install EzDefi Extension and reload the page.',
+        needInstall: true,
       });
       setProviderUrl('https://www.sollet.io');
       return;
