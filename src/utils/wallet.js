@@ -7,7 +7,7 @@ import EZWallet from './ezWallet';
 
 export const WALLET_PROVIDERS = [
   { name: 'sollet.io', url: 'https://www.sollet.io' },
-  { name: 'ezDefi', url: 'https://ezdefi.com' },
+  { name: 'ezDefi', url: 'https://ezdefi.com/wallet' },
 ];
 
 const WalletContext = React.createContext(null);
@@ -25,7 +25,7 @@ export function WalletProvider({ children }) {
     endpoint,
   ]);
   const [ezWallet] = useState(new EZWallet());
-  if (providerUrl !== 'https://www.sollet.io') {
+  if (providerUrl === 'https://ezdefi.com/wallet') {
     wallet = ezWallet;
   }
 
@@ -34,7 +34,7 @@ export function WalletProvider({ children }) {
 
   useEffect(() => {
     console.log('trying to connect');
-    if (wallet === ezWallet && !window.ethereum) {
+    if (wallet === ezWallet && !window.solana) {
       notify({
         message: 'Error',
         description:
