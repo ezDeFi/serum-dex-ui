@@ -29,9 +29,7 @@ export function notify({
         <span>
           <Link
             external
-            to={
-              'https://chrome.google.com/webstore/detail/ezdefi/bangadcapihadohjgdihpcpmjlepokld'
-            }
+            to={needInstall}
             style={{ color: '#FF0000', fontWeight: 'bold' }}
           >
             EzDefi Extension

@@ -10,6 +10,8 @@ export const WALLET_PROVIDERS = [
   { name: 'ezDeFi', url: 'https://ezdefi.com/wallet' },
 ];
 
+const EZDEFI_INSTALL = 'https://ezdefi.com/download';
+
 const WalletContext = React.createContext(null);
 
 export function WalletProvider({ children }) {
@@ -34,10 +36,10 @@ export function WalletProvider({ children }) {
 
   useEffect(() => {
     console.log('trying to connect');
-    if (wallet === ezWallet && !window.solana) {
+    if (typeof wallet.isInjected === 'function' && !wallet.isInjected()) {
       notify({
         message: 'Error',
-        needInstall: true,
+        needInstall: EZDEFI_INSTALL,
       });
       setProviderUrl('https://www.sollet.io');
       return;
