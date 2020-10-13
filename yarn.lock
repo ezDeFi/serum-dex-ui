@@ -1253,9 +1253,9 @@
   resolved "https://registry.yarnpkg.com/@emotion/unitless/-/unitless-0.7.5.tgz#77211291c1900a700b8a78cfafda3160d76949ed"
   integrity sha512-OWORNpfjMsSSUBVrRBVGECkhWcULOAJz9ZW8uK9qgxD+87M7jHRcvh/A96XXNhXTLmKcoYSQtBEX7lHMO7YRwg==
 
-"@ezdefi/ez-sol-wallet-adapter@git://github.com/ezdefi/ez-sol-wallet-adapter.git#0.1.1":
+"@ezdefi/ez-sol-wallet-adapter@git://github.com/ezdefi/ez-sol-wallet-adapter.git#srm":
   version "0.1.0"
-  resolved "git://github.com/ezdefi/ez-sol-wallet-adapter.git#82749b2022d8a88c2c6f4143210a5010e1b30736"
+  resolved "git://github.com/ezdefi/ez-sol-wallet-adapter.git#e52b54cdda3310628c35e8c0ad07e09cd8f8184b"
   dependencies:
     "@solana/web3.js" "^0.78.2"
     bs58 "^4.0.1"
