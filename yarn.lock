@@ -1253,6 +1253,14 @@
   resolved "https://registry.yarnpkg.com/@emotion/unitless/-/unitless-0.7.5.tgz#77211291c1900a700b8a78cfafda3160d76949ed"
   integrity sha512-OWORNpfjMsSSUBVrRBVGECkhWcULOAJz9ZW8uK9qgxD+87M7jHRcvh/A96XXNhXTLmKcoYSQtBEX7lHMO7YRwg==
 
+"@ezdefi/ez-sol-wallet-adapter@git://github.com/ezdefi/ez-sol-wallet-adapter.git#0.1.1":
+  version "0.1.0"
+  resolved "git://github.com/ezdefi/ez-sol-wallet-adapter.git#82749b2022d8a88c2c6f4143210a5010e1b30736"
+  dependencies:
+    "@solana/web3.js" "^0.78.2"
+    bs58 "^4.0.1"
+    eventemitter3 "^4.0.4"
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -1506,6 +1514,27 @@
     node-fetch "^2.2.0"
     npm-run-all "^4.1.5"
     rpc-websockets "^7.1.0"
+    superstruct "^0.8.3"
+    tweetnacl "^1.0.0"
+    ws "^7.0.0"
+
+"@solana/web3.js@^0.78.2":
+  version "0.78.4"
+  resolved "https://registry.yarnpkg.com/@solana/web3.js/-/web3.js-0.78.4.tgz#a942d02e353b2c3ff7ddc94cb6846b5a98887bc2"
+  integrity sha512-Zt6LN35K2sQaQfgWbNjp91qGa6dHccXTQEoojXEo0NqZ/CQqmzretgSI/3kxKUiuvLTY/1WltVM7CKRkwMNRFA==
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    bn.js "^5.0.0"
+    bs58 "^4.0.1"
+    buffer "^5.4.3"
+    buffer-layout "^1.2.0"
+    crypto-hash "^1.2.2"
+    esdoc-inject-style-plugin "^1.0.0"
+    jayson "^3.0.1"
+    mz "^2.7.0"
+    node-fetch "^2.2.0"
+    npm-run-all "^4.1.5"
+    rpc-websockets "^7.4.2"
     superstruct "^0.8.3"
     tweetnacl "^1.0.0"
     ws "^7.0.0"
@@ -4875,7 +4904,7 @@ etag@~1.8.1:
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
   integrity sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=
 
-eventemitter3@^4.0.0, eventemitter3@^4.0.4, eventemitter3@^4.0.6:
+eventemitter3@^4.0.0, eventemitter3@^4.0.4, eventemitter3@^4.0.6, eventemitter3@^4.0.7:
   version "4.0.7"
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-4.0.7.tgz#2de9b68f6528d5644ef5c59526a1b4a07306169f"
   integrity sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==
@@ -10580,6 +10609,21 @@ rpc-websockets@^7.1.0:
     circular-json "^0.5.9"
     eventemitter3 "^4.0.6"
     next-tick "^1.1.0"
+    uuid "^8.3.0"
+    ws "^7.3.1"
+  optionalDependencies:
+    bufferutil "^4.0.1"
+    utf-8-validate "^5.0.2"
+
+rpc-websockets@^7.4.2:
+  version "7.4.6"
+  resolved "https://registry.yarnpkg.com/rpc-websockets/-/rpc-websockets-7.4.6.tgz#a0053ad36e893774cdd0edb72ac577deaf34f247"
+  integrity sha512-vDGdyJv858O5ZIc7glov8pQDdFztOqujA7iNyrfPxw87ajHT5s8WQU4MLNEG8pTR/xzqOn06dYH7kef2hijInw==
+  dependencies:
+    "@babel/runtime" "^7.11.2"
+    assert-args "^1.2.1"
+    circular-json "^0.5.9"
+    eventemitter3 "^4.0.7"
     uuid "^8.3.0"
     ws "^7.3.1"
   optionalDependencies:

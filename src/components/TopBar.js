@@ -39,13 +39,6 @@ export default function TopBar() {
   const location = useLocation();
   const history = useHistory();
 
-  // Auto set endpoint when connected to ezDefi extension, available when testnet market is enabled
-  // ENDPOINTS.forEach((endpoint => {
-  //   if (endpoint.name === cluster) {
-  //     setEndpoint(endpoint.endpoint)
-  //   }
-  // }))
-
   const publicKey = wallet?.publicKey?.toBase58();
 
   const handleClick = useCallback(

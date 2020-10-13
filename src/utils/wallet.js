@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import Wallet from '@project-serum/sol-wallet-adapter';
+import EzWallet from '@ezdefi/ez-sol-wallet-adapter';
 import { notify } from './notifications';
 import { useConnectionConfig } from './connection';
 import { useLocalStorageState } from './utils';
-import EZWallet from './ezWallet';
 
 export const WALLET_PROVIDERS = [
   { name: 'sollet.io', url: 'https://www.sollet.io' },
-  { name: 'ezDefi', url: 'https://ezdefi.com/wallet' },
+  { name: 'ezDeFi', url: 'https://ezdefi.com/wallet' },
 ];
 
 const WalletContext = React.createContext(null);
@@ -24,7 +24,7 @@ export function WalletProvider({ children }) {
     providerUrl,
     endpoint,
   ]);
-  const [ezWallet] = useState(new EZWallet());
+  const [ezWallet] = useState(new EzWallet());
   if (providerUrl === 'https://ezdefi.com/wallet') {
     wallet = ezWallet;
   }
@@ -43,6 +43,14 @@ export function WalletProvider({ children }) {
       return;
     }
     wallet.on('connect', () => {
+      if (!wallet.publicKey) {
+        setConnected(false);
+        notify({
+          message: 'Connection failed.',
+          description: 'Please select SOL account.',
+        });
+        return;
+      }
       console.log('connected');
       setConnected(true);
       let walletPublicKey = wallet.publicKey.toBase58();
