@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import Wallet from '@project-serum/sol-wallet-adapter';
+import EzWallet from '@ezdefi/ezdefi-solala-wallet-adapter';
 import { notify } from './notifications';
 import { useConnectionConfig } from './connection';
 import { useLocalStorageState } from './utils';
@@ -7,7 +8,13 @@ import { WalletContextValues } from './types';
 
 export const WALLET_PROVIDERS = [
   { name: 'sollet.io', url: 'https://www.sollet.io' },
+  { name: 'ezDeFi', url: 'https://www.ezdefi.com' },
 ];
+declare global {
+  interface Window {
+    solana:any;
+  }
+}
 
 const WalletContext = React.createContext<null | WalletContextValues>(null);
 
@@ -25,6 +32,16 @@ export function WalletProvider({ children }) {
     providerUrl = savedProviderUrl;
   }
 
+  //ezdefi
+  const network = 'mainnet'
+  const ezProviderUrl = 'https://ezdefi.com'
+  const injectedPath = Object.values(window.solana||{}).find((w: any) => {return w.name=='ezdefi'})
+  const ezWallet = useMemo(() => new EzWallet(ezProviderUrl, network, injectedPath), [
+    ezProviderUrl,
+    network,
+    injectedPath,
+  ])
+  
   const wallet = useMemo(() => new Wallet(providerUrl, endpoint), [
     providerUrl,
     endpoint,
