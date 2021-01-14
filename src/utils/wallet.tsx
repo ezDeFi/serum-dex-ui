@@ -35,17 +35,21 @@ export function WalletProvider({ children }) {
   //ezdefi
   const network = 'mainnet'
   const ezProviderUrl = 'https://ezdefi.com'
-  const injectedPath = Object.values(window.solana||{}).find((w: any) => {return w.name=='ezdefi'})
+  const injectedPath = [window.solana,...Object.values(window.solana||{})].find((w: any) => {return w.name=='ezdefi'})
   const ezWallet = useMemo(() => new EzWallet(ezProviderUrl, network, injectedPath), [
     ezProviderUrl,
     network,
     injectedPath,
   ])
   
-  const wallet = useMemo(() => new Wallet(providerUrl, endpoint), [
+  var wallet = useMemo(() => new Wallet(providerUrl, endpoint), [
     providerUrl,
     endpoint,
   ]);
+
+  if (providerUrl === 'https://www.ezdefi.com') {
+    wallet = ezWallet;
+  }
 
   const [connected, setConnected] = useState(false);
 
