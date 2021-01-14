@@ -30,7 +30,7 @@ const Wrapper = styled.div`
 const LogoWrapper = styled.div`
   display: flex;
   align-items: center;
-  color: #2abdd2;
+  color: #7985ff;
   font-weight: bold;
   cursor: pointer;
   img {
@@ -142,7 +142,6 @@ export default function TopBar() {
       <Wrapper>
         <LogoWrapper onClick={() => history.push(tradePageUrl)}>
           <img src={logo} alt="" />
-          {/* {'SERUM'} */}
         </LogoWrapper>
         <Menu
           mode="horizontal"
@@ -277,7 +276,7 @@ export default function TopBar() {
           >
             <Col>
               <PlusCircleOutlined
-                style={{ color: '#2abdd2' }}
+                style={{ color: '#7985ff' }}
                 onClick={() => setAddEndpointVisible(true)}
               />
             </Col>
@@ -288,7 +287,7 @@ export default function TopBar() {
                 title="URL"
                 trigger="hover"
               >
-                <InfoCircleOutlined style={{ color: '#2abdd2' }} />
+                <InfoCircleOutlined style={{ color: '#7985ff' }} />
               </Popover>
             </Col>
             <Col>
