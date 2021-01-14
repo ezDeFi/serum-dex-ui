@@ -6,7 +6,7 @@ import {
 import { Button, Col, Menu, Popover, Row, Select } from 'antd';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import logo from '../assets/logo.svg';
+import logo from '../assets/serum-with-ezdefi.svg';
 import styled from 'styled-components';
 import { useWallet, WALLET_PROVIDERS } from '../utils/wallet';
 import { ENDPOINTS, useConnectionConfig } from '../utils/connection';
@@ -34,8 +34,8 @@ const LogoWrapper = styled.div`
   font-weight: bold;
   cursor: pointer;
   img {
-    height: 30px;
-    margin-right: 8px;
+    height: 40px;
+    margin: 15px 8px 0;
   }
 `;
 
@@ -142,7 +142,7 @@ export default function TopBar() {
       <Wrapper>
         <LogoWrapper onClick={() => history.push(tradePageUrl)}>
           <img src={logo} alt="" />
-          {'SERUM'}
+          {/* {'SERUM'} */}
         </LogoWrapper>
         <Menu
           mode="horizontal"
