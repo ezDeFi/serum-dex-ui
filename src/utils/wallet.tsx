@@ -34,8 +34,14 @@ export function WalletProvider({ children }) {
 
   //ezdefi provider configs
   const network = 'mainnet'
-  const injectedPath = [window.solana,...Object.values(window.solana||{})].find((w: any) => {return w.name === 'ezdefi'})
-
+  const injectedPath = window.solana ? [window.solana,...Object.values(window.solana||{})].find((w: any) => {return w.name === 'ezdefi'}) : null
+  if (!injectedPath) {
+    providerUrl = 'https://www.sollet.io'
+    notify({
+      message: 'ezDeFi wallet is not installed.',
+      description: '',
+    });
+  }
   const wallet = useMemo(() => {
     if (providerUrl === 'https://www.ezdefi.com') {
       return new EzWallet(providerUrl, network, injectedPath)
