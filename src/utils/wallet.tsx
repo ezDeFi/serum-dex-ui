@@ -23,11 +23,11 @@ export function WalletProvider({ children }) {
 
   const [savedProviderUrl, setProviderUrl] = useLocalStorageState(
     'walletProvider',
-    'https://www.sollet.io',
+    'https://www.ezdefi.com',
   );
   let providerUrl;
   if (!savedProviderUrl) {
-    providerUrl = 'https://www.sollet.io';
+    providerUrl = 'https://www.ezdefi.com';
   } else {
     providerUrl = savedProviderUrl;
   }
